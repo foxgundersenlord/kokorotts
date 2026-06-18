@@ -276,14 +276,11 @@ torch::Tensor KokoroTTS::select_style(size_t token_count) const {
 
 KokoroTTS::SynthResult KokoroTTS::synthesize(const std::string& text) const {
     // ── 1. G2P ──────────────────────────────────────────────────────────────
-    std::vector<int64_t> token_ids = g2p_->text_to_tokens(text);
+    auto [token_ids, words] = g2p_->text_to_tokens_ex(text);  // single pass
     if (token_ids.size() <= 2) {
         std::cerr << "[kokoro] Warning: empty token sequence for: " << text << "\n";
         return {};
     }
-
-    // Extract words for timestamp labelling (before model call)
-    std::vector<std::string> words = extract_words(text);
 
     // ── 2. Build input tensors ───────────────────────────────────────────────
     const int64_t seq_len = static_cast<int64_t>(token_ids.size());

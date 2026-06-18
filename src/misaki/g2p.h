@@ -37,6 +37,13 @@ public:
     bool cmudict_loaded() const;
     bool espeak_available() const;
 
+    // Full pipeline returning both tokens and the word list in order.
+    struct TokenizeResult {
+        std::vector<int64_t>     token_ids;
+        std::vector<std::string> words;     // one entry per SPACE-delimited group
+    };
+    TokenizeResult text_to_tokens_ex(const std::string& text) const;
+
 private:
     Config cfg_;
     TextNormalizer normalizer_;

@@ -175,62 +175,53 @@ std::vector<int64_t> G2P::word_to_tokens(const std::string& word) const {
 
 // ── Main pipeline ─────────────────────────────────────────────────────────
 
-std::vector<int64_t> G2P::text_to_tokens(const std::string& text) const {
+G2P::TokenizeResult G2P::text_to_tokens_ex(const std::string& text) const {
     std::string normalized = cfg_.normalize_text ? normalizer_.normalize(text) : text;
 
-    std::vector<int64_t> all_tokens;
-    all_tokens.push_back(0); // leading pad
+    TokenizeResult out;
+    out.token_ids.push_back(0); // leading pad
 
-    // Tokenize into words and punctuation using a simple state machine.
-    // We iterate over UTF-8 characters; ASCII punctuation is handled inline.
     size_t pos = 0;
     bool need_space = false;
 
     while (pos < normalized.size()) {
         unsigned char c = static_cast<unsigned char>(normalized[pos]);
 
-        // Detect multi-byte UTF-8 (likely IPA or Unicode punct)
         if (c >= 0x80) {
             int len = (c < 0xE0) ? 2 : (c < 0xF0) ? 3 : 4;
             if (pos + len > normalized.size()) break;
             std::string cp = normalized.substr(pos, len);
             pos += len;
-
-            // Check if this is a Unicode punctuation token
             auto pit = PUNCT_TOKENS.find(cp);
             if (pit != PUNCT_TOKENS.end()) {
-                if (!all_tokens.empty() && all_tokens.back() == 16 /*space*/)
-                    all_tokens.pop_back();
-                all_tokens.push_back(pit->second);
+                if (!out.token_ids.empty() && out.token_ids.back() == 16)
+                    out.token_ids.pop_back();
+                out.token_ids.push_back(pit->second);
                 need_space = false;
             }
-            // Otherwise treat as part of word (shouldn't happen after normalization)
             continue;
         }
 
-        // Space / whitespace
         if (std::isspace(c)) {
-            if (!all_tokens.empty() && all_tokens.back() != 0 && all_tokens.back() != 16)
+            if (!out.token_ids.empty() && out.token_ids.back() != 0 && out.token_ids.back() != 16)
                 need_space = true;
             pos++;
             continue;
         }
 
-        // ASCII punctuation
         {
             std::string cp(1, static_cast<char>(c));
             auto pit = PUNCT_TOKENS.find(cp);
             if (pit != PUNCT_TOKENS.end()) {
-                if (!all_tokens.empty() && all_tokens.back() == 16)
-                    all_tokens.pop_back();
-                all_tokens.push_back(pit->second);
+                if (!out.token_ids.empty() && out.token_ids.back() == 16)
+                    out.token_ids.pop_back();
+                out.token_ids.push_back(pit->second);
                 need_space = false;
                 pos++;
                 continue;
             }
         }
 
-        // Word: collect until next whitespace or ASCII punctuation
         size_t word_start = pos;
         while (pos < normalized.size()) {
             unsigned char wc = static_cast<unsigned char>(normalized[pos]);
@@ -242,17 +233,21 @@ std::vector<int64_t> G2P::text_to_tokens(const std::string& text) const {
 
         auto toks = word_to_tokens(word);
         if (!toks.empty()) {
-            if (need_space && !all_tokens.empty() && all_tokens.back() != 0)
-                all_tokens.push_back(16); // space token
-            all_tokens.insert(all_tokens.end(), toks.begin(), toks.end());
+            if (need_space && !out.token_ids.empty() && out.token_ids.back() != 0)
+                out.token_ids.push_back(16); // space token
+            out.words.push_back(word);       // record word label here, same boundary
+            out.token_ids.insert(out.token_ids.end(), toks.begin(), toks.end());
             need_space = false;
         }
     }
 
-    // Cap at 512 tokens (including padding)
-    if (all_tokens.size() >= 512) all_tokens.resize(511);
-    all_tokens.push_back(0); // trailing pad
-    return all_tokens;
+    if (out.token_ids.size() >= 512) out.token_ids.resize(511);
+    out.token_ids.push_back(0);
+    return out;
+}
+
+std::vector<int64_t> G2P::text_to_tokens(const std::string& text) const {
+    return text_to_tokens_ex(text).token_ids;
 }
 
 } // namespace misaki
