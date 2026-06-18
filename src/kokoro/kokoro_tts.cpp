@@ -344,13 +344,11 @@ void KokoroTTS::synthesize_to_wav(const std::string& text,
         auto chunk = synthesize(sent);
         if (chunk.audio.empty()) continue;
 
-        double silence_sec = 0.0;
         if (!first) {
             all_samples.insert(all_samples.end(), SILENCE_SAMPLES, 0.0f);
-            silence_sec = static_cast<double>(SILENCE_SAMPLES) /
+            time_offset += static_cast<double>(SILENCE_SAMPLES) /
                         audio::WavWriter::SAMPLE_RATE;
         }
-        time_offset += silence_sec;
 
         for (auto& w : chunk.words) {
             w.start_sec += time_offset;
@@ -358,11 +356,12 @@ void KokoroTTS::synthesize_to_wav(const std::string& text,
             all_words.push_back(w);
         }
 
-        // Advance offset by last word end time, not total audio duration
-        double chunk_speech_end = chunk.words.empty() ? 
-            static_cast<double>(chunk.audio.size()) / audio::WavWriter::SAMPLE_RATE :
-            chunk.words.back().end_sec;
-        time_offset += chunk_speech_end;
+        // Advance offset by the ACTUAL audio length written for this chunk,
+        // not by where the last word happened to end. Any tail audio after
+        // the last word's predicted end (vocoder decay, etc.) must still be
+        // accounted for or every subsequent sentence's timestamps drift.
+        time_offset += static_cast<double>(chunk.audio.size()) /
+                    audio::WavWriter::SAMPLE_RATE;
 
         all_samples.insert(all_samples.end(),
                         chunk.audio.begin(), chunk.audio.end());
