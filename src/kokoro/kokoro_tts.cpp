@@ -93,32 +93,29 @@ std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
     const torch::Tensor&           ts_tensor,
     const std::vector<std::string>& words)
 {
-    // ts_tensor shape: [N, 4]  (token_id, start_sec, end_sec, dur_frames)
-    // N should equal token_ids.size() (model sees all tokens including pads).
     if (ts_tensor.dim() != 2 || ts_tensor.size(1) < 3) return {};
 
     const int64_t N = ts_tensor.size(0);
     const float* ts = ts_tensor.to(torch::kFloat32).cpu().contiguous().data_ptr<float>();
 
-    // Collect per-token [start, end] for non-pad tokens.
-    // We index by position in the token_ids vector.
+    // The model receives token_ids as-is (including both pad tokens at index 0
+    // and end), and ts_tensor has one row per token position — including pads.
+    // PAD tokens have real (but meaningless) duration entries; we must skip them
+    // when building word spans, but we still consume their ts_tensor row so that
+    // the row cursor stays aligned with the token position.
     struct TokSpan { double start; double end; };
     std::vector<TokSpan> spans;
     spans.reserve(token_ids.size());
 
-    int64_t ts_row = 0; // row cursor into ts_tensor
     for (size_t i = 0; i < token_ids.size(); ++i) {
-        if (ts_row < N) {
-            spans.push_back({static_cast<double>(ts[ts_row * 4 + 1]),
-                             static_cast<double>(ts[ts_row * 4 + 2])});
-            ++ts_row;
+        if ((int64_t)i < N) {
+            spans.push_back({static_cast<double>(ts[i * 4 + 1]),
+                             static_cast<double>(ts[i * 4 + 2])});
         } else {
             spans.push_back({0.0, 0.0});
         }
     }
 
-    // Walk the token list; group phoneme tokens between SPACE/PAD boundaries
-    // into word-sized buckets, then assign to the extracted words list.
     std::vector<WordTimestamp> result;
     double word_start = -1.0, word_end = 0.0;
     size_t word_idx = 0;
@@ -128,20 +125,29 @@ std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
         result.push_back({words[word_idx], word_start, word_end});
         ++word_idx;
         word_start = -1.0;
+        word_end   = 0.0;  // BUG FIX: reset word_end so stale end doesn't leak
+                           // into the next word if it has no phonemes
     };
 
     for (size_t i = 0; i < token_ids.size(); ++i) {
         int64_t tok = token_ids[i];
-        if (tok == PAD_TOKEN || tok == SPACE_TOKEN) {
-            if (tok == SPACE_TOKEN) flush_word();
+
+        // BUG FIX: skip pad tokens without flushing — the leading pad at i=0
+        // and trailing pad at i=end are not word boundaries; treating them as
+        // SPACE caused the first/last word to be skipped or double-flushed.
+        if (tok == PAD_TOKEN) continue;
+
+        if (tok == SPACE_TOKEN) {
+            flush_word();
             continue;
         }
+
         double ts_start = spans[i].start;
         double ts_end   = spans[i].end;
         if (word_start < 0.0) word_start = ts_start;
         if (ts_end > word_end) word_end = ts_end;
     }
-    flush_word(); // last word (no trailing space)
+    flush_word(); // last word — no trailing SPACE token in sequence
 
     return result;
 }
@@ -341,22 +347,24 @@ void KokoroTTS::synthesize_to_wav(const std::string& text,
             continue;
         }
 
+        // BUG FIX: compute silence_sec and add it to time_offset BEFORE shifting
+        // word timestamps, so timestamps reflect the actual position of this
+        // chunk in the final stream (silence gap comes first, then words).
         double silence_sec = 0.0;
         if (!first) {
-            all_samples.insert(all_samples.end(), SILENCE_SAMPLES, 0.0f);
             silence_sec = static_cast<double>(SILENCE_SAMPLES) /
                           audio::WavWriter::SAMPLE_RATE;
+            all_samples.insert(all_samples.end(), SILENCE_SAMPLES, 0.0f);
         }
+        time_offset += silence_sec;  // advance past silence before shifting words
 
-        // Shift word timestamps by accumulated audio offset
         for (auto& w : chunk.words) {
             w.start_sec += time_offset;
             w.end_sec   += time_offset;
             all_words.push_back(w);
         }
 
-        time_offset += silence_sec +
-                       static_cast<double>(chunk.audio.size()) /
+        time_offset += static_cast<double>(chunk.audio.size()) /
                        audio::WavWriter::SAMPLE_RATE;
 
         all_samples.insert(all_samples.end(),
