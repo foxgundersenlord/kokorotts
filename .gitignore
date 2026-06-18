@@ -1,0 +1,8 @@
+kokoro-v1_0.pth
+libtorch_cpu.so
+kokoro_traced.pt
+libtorch_cuda.so
+libtorch/lib/libtorch.so
+Kokoro-82M/kokoro-v1_0.pth
+libtorch/lib/libtorch_cuda.so
+models/kokoro_traced.pt

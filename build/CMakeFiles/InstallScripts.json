@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/foxg/Projects/kokoro_vibecoded/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

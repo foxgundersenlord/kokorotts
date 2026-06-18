@@ -1,0 +1,3 @@
+/home/user/Desktop/kokoro/build/CMakeFiles/kokoro_tts.dir
+/home/user/Desktop/kokoro/build/CMakeFiles/edit_cache.dir
+/home/user/Desktop/kokoro/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,2839 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    searched_directories:
+      - "/home/foxg/.local/bin/uname"
+      - "/usr/local/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 7.0.1-1-cachyos - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    searched_directories:
+      - "/home/foxg/.local/bin/gmake"
+      - "/usr/local/bin/gmake"
+      - "/usr/bin/gmake"
+      - "/bin/gmake"
+      - "/usr/local/sbin/gmake"
+      - "/var/lib/flatpak/exports/bin/gmake"
+      - "/usr/bin/site_perl/gmake"
+      - "/usr/bin/vendor_perl/gmake"
+      - "/usr/bin/core_perl/gmake"
+      - "/home/foxg/.local/bin/make"
+      - "/usr/local/bin/make"
+    found: "/usr/bin/make"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompiler.cmake:73 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:69 (_cmake_find_compiler)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER"
+    description: "CXX compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "c++"
+      - "CC"
+      - "g++"
+      - "aCC"
+      - "cl"
+      - "bcc"
+      - "xlC"
+      - "icpx"
+      - "icx"
+      - "clang++"
+    candidate_directories:
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    searched_directories:
+      - "/home/foxg/.local/bin/c++"
+      - "/usr/local/bin/c++"
+    found: "/usr/bin/c++"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+    found: "/usr/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/foxg/Projects/kokoro_vibecoded/CMakeFiles/4.3.2/CompilerIdCXX/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/nm"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    searched_directories:
+      - "/usr/bin/dlltool"
+      - "/home/foxg/.local/bin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/var/lib/flatpak/exports/bin/dlltool"
+      - "/usr/bin/site_perl/dlltool"
+      - "/usr/bin/vendor_perl/dlltool"
+      - "/usr/bin/core_perl/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    found: "/usr/bin/addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    searched_directories:
+      - "/usr/bin/tapi"
+      - "/home/foxg/.local/bin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/var/lib/flatpak/exports/bin/tapi"
+      - "/usr/bin/site_perl/tapi"
+      - "/usr/bin/vendor_perl/tapi"
+      - "/usr/bin/core_perl/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gcc-ar-15.2"
+      - "gcc-ar-15"
+      - "gcc-ar15"
+      - "gcc-ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    searched_directories:
+      - "/usr/bin/gcc-ar-15.2"
+      - "/home/foxg/.local/bin/gcc-ar-15.2"
+      - "/usr/local/bin/gcc-ar-15.2"
+      - "/bin/gcc-ar-15.2"
+      - "/usr/local/sbin/gcc-ar-15.2"
+      - "/var/lib/flatpak/exports/bin/gcc-ar-15.2"
+      - "/usr/bin/site_perl/gcc-ar-15.2"
+      - "/usr/bin/vendor_perl/gcc-ar-15.2"
+      - "/usr/bin/core_perl/gcc-ar-15.2"
+      - "/usr/bin/gcc-ar-15"
+      - "/home/foxg/.local/bin/gcc-ar-15"
+      - "/usr/local/bin/gcc-ar-15"
+      - "/bin/gcc-ar-15"
+      - "/usr/local/sbin/gcc-ar-15"
+      - "/var/lib/flatpak/exports/bin/gcc-ar-15"
+      - "/usr/bin/site_perl/gcc-ar-15"
+      - "/usr/bin/vendor_perl/gcc-ar-15"
+      - "/usr/bin/core_perl/gcc-ar-15"
+      - "/usr/bin/gcc-ar15"
+      - "/home/foxg/.local/bin/gcc-ar15"
+      - "/usr/local/bin/gcc-ar15"
+      - "/bin/gcc-ar15"
+      - "/usr/local/sbin/gcc-ar15"
+      - "/var/lib/flatpak/exports/bin/gcc-ar15"
+      - "/usr/bin/site_perl/gcc-ar15"
+      - "/usr/bin/vendor_perl/gcc-ar15"
+      - "/usr/bin/core_perl/gcc-ar15"
+    found: "/usr/bin/gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gcc-ranlib-15.2"
+      - "gcc-ranlib-15"
+      - "gcc-ranlib15"
+      - "gcc-ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+    searched_directories:
+      - "/usr/bin/gcc-ranlib-15.2"
+      - "/home/foxg/.local/bin/gcc-ranlib-15.2"
+      - "/usr/local/bin/gcc-ranlib-15.2"
+      - "/bin/gcc-ranlib-15.2"
+      - "/usr/local/sbin/gcc-ranlib-15.2"
+      - "/var/lib/flatpak/exports/bin/gcc-ranlib-15.2"
+      - "/usr/bin/site_perl/gcc-ranlib-15.2"
+      - "/usr/bin/vendor_perl/gcc-ranlib-15.2"
+      - "/usr/bin/core_perl/gcc-ranlib-15.2"
+      - "/usr/bin/gcc-ranlib-15"
+      - "/home/foxg/.local/bin/gcc-ranlib-15"
+      - "/usr/local/bin/gcc-ranlib-15"
+      - "/bin/gcc-ranlib-15"
+      - "/usr/local/sbin/gcc-ranlib-15"
+      - "/var/lib/flatpak/exports/bin/gcc-ranlib-15"
+      - "/usr/bin/site_perl/gcc-ranlib-15"
+      - "/usr/bin/vendor_perl/gcc-ranlib-15"
+      - "/usr/bin/core_perl/gcc-ranlib-15"
+      - "/usr/bin/gcc-ranlib15"
+      - "/home/foxg/.local/bin/gcc-ranlib15"
+      - "/usr/local/bin/gcc-ranlib15"
+      - "/bin/gcc-ranlib15"
+      - "/usr/local/sbin/gcc-ranlib15"
+      - "/var/lib/flatpak/exports/bin/gcc-ranlib15"
+      - "/usr/bin/site_perl/gcc-ranlib15"
+      - "/usr/bin/vendor_perl/gcc-ranlib15"
+      - "/usr/bin/core_perl/gcc-ranlib15"
+    found: "/usr/bin/gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-JKoy70"
+      binary: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-JKoy70"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-JKoy70'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_237eb/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_237eb.dir/build.make CMakeFiles/cmTC_237eb.dir/build
+        make[1]: Entering directory '/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-JKoy70'
+        Building CXX object CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        Target: x86_64-pc-linux-gnu
+        Configured with: /tmp/pkg/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust,cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/CachyOS/CachyOS-PKGBUILDS/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20260209 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_237eb.dir/'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_237eb.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/cci4ugv4.s
+        GNU C++17 (GCC) version 15.2.1 20260209 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 15.2.1 20260209, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        warning: MPC header version 1.3.1 differs from library version 1.4.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include
+         /usr/local/include
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed
+         /usr/include
+        End of search list.
+        Compiler executable checksum: e33852c7c89951bc2dfbee7c05e182e4
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_237eb.dir/'
+         as -v --64 -o CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o /tmp/cci4ugv4.s
+        GNU assembler version 2.46 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.46
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_237eb
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_237eb.dir/link.txt --verbose=1
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper
+        Target: x86_64-pc-linux-gnu
+        Configured with: /tmp/pkg/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust,cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/CachyOS/CachyOS-PKGBUILDS/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20260209 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_237eb' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_237eb.'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cciD7YxO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_237eb /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        collect2 version 15.2.1 20260209
+        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cciD7YxO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_237eb /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        GNU ld (GNU Binutils) 2.46
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_237eb' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_237eb.'
+        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_237eb
+        make[1]: Leaving directory '/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-JKoy70'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+          add: [/usr/local/include]
+          add: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1] ==> [/usr/include/c++/15.2.1]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu] ==> [/usr/include/c++/15.2.1/x86_64-pc-linux-gnu]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward] ==> [/usr/include/c++/15.2.1/backward]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/include/c++/15.2.1;/usr/include/c++/15.2.1/x86_64-pc-linux-gnu;/usr/include/c++/15.2.1/backward;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include;/usr/local/include;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-JKoy70']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_237eb/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_237eb.dir/build.make CMakeFiles/cmTC_237eb.dir/build]
+        ignore line: [make[1]: Entering directory '/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-JKoy70']
+        ignore line: [Building CXX object CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: /tmp/pkg/src/gcc/configure --enable-languages=ada c c++ d fortran go lto m2 objc obj-c++ rust cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/CachyOS/CachyOS-PKGBUILDS/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.2.1 20260209 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_237eb.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_237eb.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/cci4ugv4.s]
+        ignore line: [GNU C++17 (GCC) version 15.2.1 20260209 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 15.2.1 20260209  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
+        ignore line: []
+        ignore line: [warning: MPC header version 1.3.1 differs from library version 1.4.1.]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: e33852c7c89951bc2dfbee7c05e182e4]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_237eb.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o /tmp/cci4ugv4.s]
+        ignore line: [GNU assembler version 2.46 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.46]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_237eb]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_237eb.dir/link.txt --verbose=1]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: /tmp/pkg/src/gcc/configure --enable-languages=ada c c++ d fortran go lto m2 objc obj-c++ rust cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://github.com/CachyOS/CachyOS-PKGBUILDS/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.2.1 20260209 (GCC) ]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_237eb' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_237eb.']
+        link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cciD7YxO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_237eb /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cciD7YxO.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_237eb] ==> ignore
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+        ignore line: [collect2 version 15.2.1 20260209]
+        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cciD7YxO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_237eb /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_237eb.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+        linker tool for 'CXX': /usr/bin/ld
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o] ==> [/usr/lib/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o] ==> [/usr/lib/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o] ==> [/usr/lib/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..] ==> [/usr/lib]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib/Scrt1.o;/usr/lib/crti.o;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o;/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o;/usr/lib/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1;/usr/lib;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld (GNU Binutils) 2.46
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "libtorch/share/cmake/Caffe2/public/mkl.cmake:1 (find_package)"
+      - "libtorch/share/cmake/Caffe2/Caffe2Config.cmake:113 (include)"
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:62 (find_package)"
+      - "CMakeLists.txt:17 (find_package)"
+    name: "MKL"
+    configs:
+      -
+        filename: "MKL.cps"
+        kind: "cps"
+      -
+        filename: "mkl.cps"
+        kind: "cps"
+      -
+        filename: "MKLConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "mkl-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "MKL"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/MKLConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/mkl-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/lib/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/lib/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/share/cps/MKL.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/share/cps/mkl.cps"
+        mode: "cps"
+        reason: "no_exist"
+    found: null
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "libtorch/share/cmake/Caffe2/public/mkldnn.cmake:7 (find_package)"
+      - "libtorch/share/cmake/Caffe2/Caffe2Config.cmake:117 (include)"
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:62 (find_package)"
+      - "CMakeLists.txt:17 (find_package)"
+    name: "MKLDNN"
+    configs:
+      -
+        filename: "MKLDNN.cps"
+        kind: "cps"
+      -
+        filename: "mkldnn.cps"
+        kind: "cps"
+      -
+        filename: "MKLDNNConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "mkldnn-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "MKLDNN"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/.local/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/var/lib/flatpak/exports/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/MKLDNNConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/mkldnn-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/lib/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/lib/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/share/cps/MKLDNN.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/share/cps/mkldnn.cps"
+        mode: "cps"
+        reason: "no_exist"
+    found: null
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:62 (find_package)"
+      - "CMakeLists.txt:17 (find_package)"
+    name: "Caffe2"
+    configs:
+      -
+        filename: "Caffe2.cps"
+        kind: "cps"
+      -
+        filename: "caffe2.cps"
+        kind: "cps"
+      -
+        filename: "Caffe2Config.cmake"
+        kind: "cmake"
+      -
+        filename: "caffe2-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "Caffe2"
+      search_paths:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cmake/Torch/../Caffe2"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/Caffe2Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/caffe2-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/lib/cps/Caffe2.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/lib/cps/caffe2.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/share/cps/Caffe2.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/share/cps/caffe2.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/Caffe2Config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/caffe2-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/cps/Caffe2.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/cps/caffe2.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cps/Caffe2.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cps/caffe2.cps"
+        mode: "cps"
+        reason: "no_exist"
+    found:
+      path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cmake/Caffe2/Caffe2Config.cmake"
+      mode: "config"
+      version: ""
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:18 (find_library)"
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:64 (append_torchlib_if_found)"
+      - "CMakeLists.txt:17 (find_package)"
+    mode: "library"
+    variable: "c10_LIBRARY"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "c10"
+    candidate_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/lib/"
+      - "/usr/local/"
+      - "/usr/lib/"
+      - "/usr/"
+      - "/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/"
+      - "/opt/lib/"
+      - "/opt/"
+      - "/usr/lib/X11/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+    found: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/libc10.so"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:18 (find_library)"
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:119 (append_torchlib_if_found)"
+      - "CMakeLists.txt:17 (find_package)"
+    mode: "library"
+    variable: "kineto_LIBRARY"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "kineto"
+    candidate_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/lib/"
+      - "/usr/local/"
+      - "/usr/lib/"
+      - "/usr/"
+      - "/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/"
+      - "/opt/lib/"
+      - "/opt/"
+      - "/usr/lib/X11/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+    searched_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/lib/"
+      - "/usr/local/"
+      - "/usr/lib/"
+      - "/usr/"
+      - "/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/"
+      - "/opt/lib/"
+      - "/opt/"
+      - "/usr/lib/X11/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:134 (find_library)"
+      - "CMakeLists.txt:17 (find_package)"
+    mode: "library"
+    variable: "C10_CUDA_LIBRARY"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "c10_cuda"
+    candidate_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/lib/"
+      - "/usr/local/"
+      - "/usr/lib/"
+      - "/usr/"
+      - "/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/"
+      - "/opt/lib/"
+      - "/opt/"
+      - "/usr/lib/X11/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+    found: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/libc10_cuda.so"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "libtorch/share/cmake/Torch/TorchConfig.cmake:144 (find_library)"
+      - "CMakeLists.txt:17 (find_package)"
+    mode: "library"
+    variable: "TORCH_LIBRARY"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "torch"
+    candidate_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/lib/"
+      - "/usr/local/"
+      - "/usr/lib/"
+      - "/usr/"
+      - "/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/"
+      - "/opt/lib/"
+      - "/opt/"
+      - "/usr/lib/X11/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+    found: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/libtorch.so"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:17 (find_package)"
+    name: "Torch"
+    configs:
+      -
+        filename: "Torch.cps"
+        kind: "cps"
+      -
+        filename: "torch.cps"
+        kind: "cps"
+      -
+        filename: "TorchConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "torch-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "Torch"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/TorchConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/torch-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/lib/cps/Torch.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/lib/cps/torch.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/share/cps/Torch.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/pkgRedirects/share/cps/torch.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/TorchConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/torch-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/cps/Torch.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/cps/torch.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cps/Torch.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cps/torch.cps"
+        mode: "cps"
+        reason: "no_exist"
+    found:
+      path: "/home/foxg/Projects/kokoro_vibecoded/libtorch/share/cmake/Torch/TorchConfig.cmake"
+      mode: "config"
+      version: "2.13.0"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:162 (check_cxx_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:226 (_threads_check_libc)"
+      - "CMakeLists.txt:18 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-eByWFA"
+      binary: "/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-eByWFA"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-eByWFA'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_e9965/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_e9965.dir/build.make CMakeFiles/cmTC_e9965.dir/build
+        make[1]: Entering directory '/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-eByWFA'
+        Building CXX object CMakeFiles/cmTC_e9965.dir/src.cxx.o
+        /usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu++17 -o CMakeFiles/cmTC_e9965.dir/src.cxx.o -c /home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-eByWFA/src.cxx
+        Linking CXX executable cmTC_e9965
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9965.dir/link.txt --verbose=1
+        /usr/bin/c++ CMakeFiles/cmTC_e9965.dir/src.cxx.o -o cmTC_e9965
+        make[1]: Leaving directory '/home/foxg/Projects/kokoro_vibecoded/CMakeFiles/CMakeScratch/TryCompile-eByWFA'
+        
+      exitCode: 0
+  -
+    kind: "find-v1"
+    backtrace:
+      - "CMakeLists.txt:20 (find_path)"
+    mode: "path"
+    variable: "ESPEAK_INCLUDE_DIR"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "espeak-ng/speak_lib.h"
+    candidate_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/include/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/include/"
+      - "/usr/local/"
+      - "/usr/include/"
+      - "/usr/"
+      - "/include/"
+      - "/usr/X11R6/include/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/include/"
+      - "/usr/pkg/"
+      - "/opt/include/"
+      - "/opt/"
+      - "/usr/include/X11/"
+      - "/usr/include/"
+      - "/usr/local/include/"
+    searched_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/include/espeak-ng/speak_lib.h"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/espeak-ng/speak_lib.h"
+      - "/home/foxg/.local/bin/espeak-ng/speak_lib.h"
+      - "/usr/local/bin/espeak-ng/speak_lib.h"
+      - "/usr/bin/espeak-ng/speak_lib.h"
+      - "/bin/espeak-ng/speak_lib.h"
+      - "/usr/local/sbin/espeak-ng/speak_lib.h"
+      - "/var/lib/flatpak/exports/bin/espeak-ng/speak_lib.h"
+      - "/usr/bin/site_perl/espeak-ng/speak_lib.h"
+      - "/usr/bin/vendor_perl/espeak-ng/speak_lib.h"
+      - "/usr/bin/core_perl/espeak-ng/speak_lib.h"
+      - "/usr/local/include/espeak-ng/speak_lib.h"
+      - "/usr/local/espeak-ng/speak_lib.h"
+    found: "/usr/include/"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_INCLUDE_PATH:
+        - "/usr/include/X11"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "CMakeLists.txt:22 (find_library)"
+    mode: "library"
+    variable: "ESPEAK_LIBRARY"
+    description: "Path to a library."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "espeak-ng"
+      - "espeak"
+    candidate_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/lib/"
+      - "/usr/local/"
+      - "/usr/lib/"
+      - "/usr/"
+      - "/lib/"
+      - "/usr/X11R6/lib/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/lib/"
+      - "/usr/pkg/"
+      - "/opt/lib/"
+      - "/opt/"
+      - "/usr/lib/X11/"
+      - "/usr/lib/"
+      - "/usr/local/lib/"
+      - "/usr/lib/x86_64-linux-gnu/"
+    searched_directories:
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/lib/"
+      - "/home/foxg/Projects/kokoro_vibecoded/libtorch/"
+      - "/home/foxg/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/lib/"
+      - "/usr/local/"
+    found: "/usr/lib/libespeak-ng.so"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/foxg/Projects/kokoro_vibecoded/libtorch"
+      ENV{PATH}:
+        - "/home/foxg/.local/bin"
+        - "/home/foxg/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+      CMAKE_SYSTEM_LIBRARY_PATH:
+        - "/usr/lib/X11"
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 6.12.86+deb13-amd64 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/user/Desktop/kokoro/CMakeFiles/3.31.6/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-Txvg5U"
+      binary: "/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-Txvg5U"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-Txvg5U'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_750e3/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_750e3.dir/build.make CMakeFiles/cmTC_750e3.dir/build
+        gmake[1]: Entering directory '/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-Txvg5U'
+        Building CXX object CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Debian 14.2.0-19' --with-bugurl=file:///usr/share/doc/gcc-14/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2,rust --prefix=/usr --with-gcc-major-version-only --program-suffix=-14 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/reproducible-path/gcc-14-14.2.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/reproducible-path/gcc-14-14.2.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=3
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 14.2.0 (Debian 14.2.0-19) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_750e3.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/14/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_750e3.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -o /tmp/cc8GqcAq.s
+        GNU C++17 (Debian 14.2.0-19) version 14.2.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 14.2.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        warning: MPFR header version 4.2.1 differs from library version 4.2.2.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/14"
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/14/include-fixed/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/14/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/14/../../../../x86_64-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/include/c++/14
+         /usr/include/x86_64-linux-gnu/c++/14
+         /usr/include/c++/14/backward
+         /usr/lib/gcc/x86_64-linux-gnu/14/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        Compiler executable checksum: a0e1d70a4b6c50c7ed1b3d36dfd3f9a4
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_750e3.dir/'
+         as -v --64 -o CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc8GqcAq.s
+        GNU assembler version 2.44 (x86_64-linux-gnu) using BFD version (GNU Binutils for Debian) 2.44
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_750e3
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_750e3.dir/link.txt --verbose=1
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Debian 14.2.0-19' --with-bugurl=file:///usr/share/doc/gcc-14/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2,rust --prefix=/usr --with-gcc-major-version-only --program-suffix=-14 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/reproducible-path/gcc-14-14.2.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/reproducible-path/gcc-14-14.2.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=3
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 14.2.0 (Debian 14.2.0-19) 
+        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_750e3' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_750e3.'
+         /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/cco3GlKo.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_750e3 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+        collect2 version 14.2.0
+        /usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/cco3GlKo.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_750e3 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+        GNU ld (GNU Binutils for Debian) 2.44
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_750e3' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_750e3.'
+        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_750e3
+        gmake[1]: Leaving directory '/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-Txvg5U'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/include/c++/14]
+          add: [/usr/include/x86_64-linux-gnu/c++/14]
+          add: [/usr/include/c++/14/backward]
+          add: [/usr/lib/gcc/x86_64-linux-gnu/14/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/include/c++/14] ==> [/usr/include/c++/14]
+        collapse include dir [/usr/include/x86_64-linux-gnu/c++/14] ==> [/usr/include/x86_64-linux-gnu/c++/14]
+        collapse include dir [/usr/include/c++/14/backward] ==> [/usr/include/c++/14/backward]
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/14/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/14/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/include/c++/14;/usr/include/x86_64-linux-gnu/c++/14;/usr/include/c++/14/backward;/usr/lib/gcc/x86_64-linux-gnu/14/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-Txvg5U']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_750e3/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_750e3.dir/build.make CMakeFiles/cmTC_750e3.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-Txvg5U']
+        ignore line: [Building CXX object CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Debian 14.2.0-19' --with-bugurl=file:///usr/share/doc/gcc-14/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 rust --prefix=/usr --with-gcc-major-version-only --program-suffix=-14 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/reproducible-path/gcc-14-14.2.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/reproducible-path/gcc-14-14.2.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=3]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 14.2.0 (Debian 14.2.0-19) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_750e3.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_750e3.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -o /tmp/cc8GqcAq.s]
+        ignore line: [GNU C++17 (Debian 14.2.0-19) version 14.2.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 14.2.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.27-GMP]
+        ignore line: []
+        ignore line: [warning: MPFR header version 4.2.1 differs from library version 4.2.2.]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/14"]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/14/include-fixed/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/14/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/14/../../../../x86_64-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/include/c++/14]
+        ignore line: [ /usr/include/x86_64-linux-gnu/c++/14]
+        ignore line: [ /usr/include/c++/14/backward]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/14/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: a0e1d70a4b6c50c7ed1b3d36dfd3f9a4]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_750e3.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc8GqcAq.s]
+        ignore line: [GNU assembler version 2.44 (x86_64-linux-gnu) using BFD version (GNU Binutils for Debian) 2.44]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_750e3]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_750e3.dir/link.txt --verbose=1]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Debian 14.2.0-19' --with-bugurl=file:///usr/share/doc/gcc-14/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 rust --prefix=/usr --with-gcc-major-version-only --program-suffix=-14 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/reproducible-path/gcc-14-14.2.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/reproducible-path/gcc-14-14.2.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=3]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 14.2.0 (Debian 14.2.0-19) ]
+        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_750e3' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_750e3.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/cco3GlKo.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_750e3 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/14/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cco3GlKo.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_750e3] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/14] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/14]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/14/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/14/../../..]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [collect2 version 14.2.0]
+        ignore line: [/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/cco3GlKo.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_750e3 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_750e3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
+        linker tool for 'CXX': /usr/bin/ld
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/14] ==> [/usr/lib/gcc/x86_64-linux-gnu/14]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/14/../../..] ==> [/usr/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/14;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld (GNU Binutils for Debian) 2.44
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/usr/share/cmake-3.31/Modules/CheckCXXSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.31/Modules/FindThreads.cmake:99 (CHECK_CXX_SOURCE_COMPILES)"
+      - "/usr/share/cmake-3.31/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "CMakeLists.txt:18 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-RNNd6b"
+      binary: "/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-RNNd6b"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-RNNd6b'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_0f17b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_0f17b.dir/build.make CMakeFiles/cmTC_0f17b.dir/build
+        gmake[1]: Entering directory '/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-RNNd6b'
+        Building CXX object CMakeFiles/cmTC_0f17b.dir/src.cxx.o
+        /usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu++17 -o CMakeFiles/cmTC_0f17b.dir/src.cxx.o -c /home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-RNNd6b/src.cxx
+        Linking CXX executable cmTC_0f17b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f17b.dir/link.txt --verbose=1
+        /usr/bin/c++ CMakeFiles/cmTC_0f17b.dir/src.cxx.o -o cmTC_0f17b
+        gmake[1]: Leaving directory '/home/user/Desktop/kokoro/CMakeFiles/CMakeScratch/TryCompile-RNNd6b'
+        
+      exitCode: 0
+...
