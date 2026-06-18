@@ -142,8 +142,15 @@ std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
             continue;
         }
 
-        double ts_start = spans[i].start;
-        double ts_end   = spans[i].end;
+        // Get the leading pad's duration to use as the time base offset to subtract
+        double pad_offset = 0.0;
+        if (!token_ids.empty() && token_ids[0] == PAD_TOKEN && N > 0) {
+            pad_offset = static_cast<double>(ts[0 * 4 + 2]); // end_sec of leading pad = its duration
+        }
+
+        // Then when assigning span times:
+        double ts_start = spans[i].start - pad_offset;
+        double ts_end   = spans[i].end   - pad_offset;
         if (word_start < 0.0) word_start = ts_start;
         if (ts_end > word_end) word_end = ts_end;
     }
@@ -265,7 +272,9 @@ std::vector<std::string> KokoroTTS::list_voices() const {
 
 torch::Tensor KokoroTTS::select_style(size_t token_count) const {
     int64_t N   = voice_pack_.size(0);
-    int64_t idx = static_cast<int64_t>(token_count) - 1;
+    // token_count includes leading + trailing pad; match Python which indexes
+    // by the number of real tokens (no pads)
+    int64_t idx = static_cast<int64_t>(token_count) - 2;
     idx = std::max<int64_t>(0, std::min(idx, N - 1));
     return voice_pack_[idx].squeeze(0);
 }
@@ -338,34 +347,32 @@ void KokoroTTS::synthesize_to_wav(const std::string& text,
     bool first = true;
 
     for (const auto& sent : sentences) {
-    auto chunk = synthesize(sent);
-    if (chunk.audio.empty()) {
-        std::cerr << "[kokoro] No audio for chunk: " << sent << "\n";
-        continue;
-    }
+        auto chunk = synthesize(sent);
+        if (chunk.audio.empty()) continue;
 
-    // 1. Insert inter-sentence silence and advance offset past it
-    if (!first) {
-        all_samples.insert(all_samples.end(), SILENCE_SAMPLES, 0.0f);
-        time_offset += static_cast<double>(SILENCE_SAMPLES) /
-                       audio::WavWriter::SAMPLE_RATE;
-    }
+        double silence_sec = 0.0;
+        if (!first) {
+            all_samples.insert(all_samples.end(), SILENCE_SAMPLES, 0.0f);
+            silence_sec = static_cast<double>(SILENCE_SAMPLES) /
+                        audio::WavWriter::SAMPLE_RATE;
+        }
+        time_offset += silence_sec;
 
-    // 2. Shift this chunk's word timestamps by offset accumulated SO FAR
-    //    (i.e. after all previous chunks + silences, before this chunk)
-    for (auto& w : chunk.words) {
-        w.start_sec += time_offset;
-        w.end_sec   += time_offset;
-        all_words.push_back(w);
-    }
+        for (auto& w : chunk.words) {
+            w.start_sec += time_offset;
+            w.end_sec   += time_offset;
+            all_words.push_back(w);
+        }
 
-    // 3. Append audio and THEN advance offset past this chunk
-    all_samples.insert(all_samples.end(),
-                       chunk.audio.begin(), chunk.audio.end());
-    time_offset += static_cast<double>(chunk.audio.size()) /
-                   audio::WavWriter::SAMPLE_RATE;
+        // Advance offset by last word end time, not total audio duration
+        double chunk_speech_end = chunk.words.empty() ? 
+            static_cast<double>(chunk.audio.size()) / audio::WavWriter::SAMPLE_RATE :
+            chunk.words.back().end_sec;
+        time_offset += chunk_speech_end;
 
-    first = false;
+        all_samples.insert(all_samples.end(),
+                        chunk.audio.begin(), chunk.audio.end());
+        first = false;
     }
 
     if (all_samples.empty()) {
