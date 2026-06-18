@@ -341,35 +341,34 @@ void KokoroTTS::synthesize_to_wav(const std::string& text,
     bool first = true;
 
     for (const auto& sent : sentences) {
-        auto chunk = synthesize(sent);
-        if (chunk.audio.empty()) {
-            std::cerr << "[kokoro] No audio for chunk: " << sent << "\n";
-            continue;
-        }
+    auto chunk = synthesize(sent);
+    if (chunk.audio.empty()) {
+        std::cerr << "[kokoro] No audio for chunk: " << sent << "\n";
+        continue;
+    }
 
-        // BUG FIX: compute silence_sec and add it to time_offset BEFORE shifting
-        // word timestamps, so timestamps reflect the actual position of this
-        // chunk in the final stream (silence gap comes first, then words).
-        double silence_sec = 0.0;
-        if (!first) {
-            silence_sec = static_cast<double>(SILENCE_SAMPLES) /
-                          audio::WavWriter::SAMPLE_RATE;
-            all_samples.insert(all_samples.end(), SILENCE_SAMPLES, 0.0f);
-        }
-        time_offset += silence_sec;  // advance past silence before shifting words
-
-        for (auto& w : chunk.words) {
-            w.start_sec += time_offset;
-            w.end_sec   += time_offset;
-            all_words.push_back(w);
-        }
-
-        time_offset += static_cast<double>(chunk.audio.size()) /
+    // 1. Insert inter-sentence silence and advance offset past it
+    if (!first) {
+        all_samples.insert(all_samples.end(), SILENCE_SAMPLES, 0.0f);
+        time_offset += static_cast<double>(SILENCE_SAMPLES) /
                        audio::WavWriter::SAMPLE_RATE;
+    }
 
-        all_samples.insert(all_samples.end(),
-                           chunk.audio.begin(), chunk.audio.end());
-        first = false;
+    // 2. Shift this chunk's word timestamps by offset accumulated SO FAR
+    //    (i.e. after all previous chunks + silences, before this chunk)
+    for (auto& w : chunk.words) {
+        w.start_sec += time_offset;
+        w.end_sec   += time_offset;
+        all_words.push_back(w);
+    }
+
+    // 3. Append audio and THEN advance offset past this chunk
+    all_samples.insert(all_samples.end(),
+                       chunk.audio.begin(), chunk.audio.end());
+    time_offset += static_cast<double>(chunk.audio.size()) /
+                   audio::WavWriter::SAMPLE_RATE;
+
+    first = false;
     }
 
     if (all_samples.empty()) {
