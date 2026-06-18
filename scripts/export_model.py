@@ -29,32 +29,18 @@ import torch
 
 @dataclass
 class PhonemeTimestamp:
-    token_id: str           # The actual phoneme (e.g., "K", "AA", "T")
-    start: float        # Start time in seconds
-    end: float          # End time in seconds
-    duration_frames: int     # Length in seconds
+    token_id: str
+    start: float
+    end: float
+    duration_frames: int
 
 @dataclass
 class Output:
     audio: torch.FloatTensor
     pred_dur: Optional[torch.LongTensor] = None
-    phoneme_timestamps: Optional[list[PhonemeTimestamp]] = None
+    phoneme_timestamps: Optional[list] = None
 
 class KModel(torch.nn.Module):
-    '''
-    KModel is a torch.nn.Module with 2 main responsibilities:
-    1. Init weights, downloading config.json + model.pth from HF if needed
-    2. forward(phonemes: str, ref_s: FloatTensor) -> (audio: FloatTensor)
-
-    You likely only need one KModel instance, and it can be reused across
-    multiple KPipelines to avoid redundant memory allocation.
-
-    Unlike KPipeline, KModel is language-blind.
-
-    KModel stores self.vocab and thus knows how to map phonemes -> input_ids,
-    so there is no need to repeatedly download config.json outside of KModel.
-    '''
-
     MODEL_NAMES = {
         'hexgrad/Kokoro-82M': 'kokoro-v1_0.pth',
         'hexgrad/Kokoro-82M-v1.1-zh': 'kokoro-v1_1-zh.pth',
@@ -116,7 +102,7 @@ class KModel(torch.nn.Module):
         input_ids: torch.LongTensor,
         ref_s: torch.FloatTensor,
         speed: float = 1
-    ) -> tuple[torch.FloatTensor, torch.LongTensor]:
+    ) -> tuple:
         input_lengths = torch.full(
             (input_ids.shape[0],),
             input_ids.shape[-1],
@@ -143,68 +129,65 @@ class KModel(torch.nn.Module):
         t_en = self.text_encoder(input_ids, input_lengths, text_mask)
         asr = t_en @ pred_aln_trg
         audio = self.decoder(asr, F0_pred, N_pred, ref_s[:, :128]).squeeze()
-        # --- ADD THIS INSIDE forward_with_tokens ---
 
-    # 1. Configuration (Check your model's config for these)
-        sample_rate = 24000
-        hop_length = 300
-        seconds_per_frame = hop_length / sample_rate
+        return audio, pred_dur
 
-    # 2. Convert tensor to a list of integers
-        durations_list = pred_dur.tolist()
 
-    # 3. Calculate timestamps
-        phoneme_timestamps = []
-        current_time = 0.0
+class KokoroWrapper(torch.nn.Module):
+    """
+    Wraps KModel for TorchScript tracing.
 
-        for i, dur_in_frames in enumerate(durations_list):
-            duration_secs = dur_in_frames * seconds_per_frame
-            # Extract ID from the input_ids tensor
-            t_id = input_ids[0, i].item()
+    Returns (audio, ts_tensor) where ts_tensor has shape [seq_len, 4]:
+        col 0: token_id  (float, cast from input_ids)
+        col 1: start_sec
+        col 2: end_sec
+        col 3: duration_frames
 
-            phoneme_timestamps.append(PhonemeTimestamp(
-                token_id=t_id, # Ensure this is an int/float, not a string
-                start=round(current_time, 4),
-                end=round(current_time + duration_secs, 4),
-                duration_frames=dur_in_frames
-            ))
-            current_time += duration_secs
+    IMPORTANT: ts_tensor is built entirely from tensors (no Python lists or
+    dataclass comprehensions) so torch.jit.trace generalises correctly to
+    sequences of any length at runtime.
+    """
 
-        # Now you can return this alongside the audio
-        return audio, pred_dur, phoneme_timestamps
+    HOP_LENGTH  = 300
+    SAMPLE_RATE = 24000
 
-    def forward(
-        self,
-        phonemes: str,
-        ref_s: torch.FloatTensor,
-        speed: float = 1,
-        return_output: bool = False
-    ) -> Union['KModel.Output', torch.FloatTensor]:
-        input_ids = list(filter(lambda i: i is not None, map(lambda p: self.vocab.get(p), phonemes)))
-        logger.debug(f"phonemes: {phonemes} -> input_ids: {input_ids}")
-        assert len(input_ids)+2 <= self.context_length, (len(input_ids)+2, self.context_length)
-        input_ids = torch.LongTensor([[0, *input_ids, 0]]).to(self.device)
-        ref_s = ref_s.to(self.device)
-        audio, pred_dur, ts = self.forward_with_tokens(input_ids, ref_s, speed)
-        audio = audio.squeeze().cpu()
-        pred_dur = pred_dur.cpu() if pred_dur is not None else None
-        logger.debug(f"pred_dur: {pred_dur}")
-        return self.Output(audio=audio, pred_dur=pred_dur, phoneme_timestamps=ts) if return_output else audio
-
-class KModelForONNX(torch.nn.Module):
-    def __init__(self, kmodel: KModel):
+    def __init__(self, m: KModel, speed: float = 1.0):
         super().__init__()
-        self.kmodel = kmodel
+        self.m     = m
+        self.speed = speed
 
     def forward(
         self,
-        input_ids: torch.LongTensor,
-        ref_s: torch.FloatTensor,
-        speed: float = 1
-    ) -> tuple[torch.FloatTensor, torch.LongTensor]:
-        waveform, duration = self.kmodel.forward_with_tokens(input_ids, ref_s, speed)
-        return waveform, duration
+        input_ids: torch.Tensor,
+        ref_s:     torch.Tensor,
+    ) -> tuple:  # (audio: Tensor, ts_tensor: Tensor[seq_len, 4])
 
+        audio, pred_dur = self.m.forward_with_tokens(input_ids, ref_s, self.speed)
+
+        # --- Build timestamp tensor entirely in tensor ops ---
+        # pred_dur shape: [seq_len]  (one duration-in-frames per input token)
+        seq_len = pred_dur.shape[0]
+
+        # seconds per frame
+        spf = self.HOP_LENGTH / self.SAMPLE_RATE  # scalar, constant
+
+        # duration in seconds for each token
+        dur_sec = pred_dur.float() * spf          # [seq_len]
+
+        # cumulative end times
+        end_sec   = torch.cumsum(dur_sec, dim=0)  # [seq_len]
+        start_sec = end_sec - dur_sec             # [seq_len]
+
+        # token ids as float (input_ids shape is [1, seq_len])
+        token_ids_f = input_ids[0].float()        # [seq_len]
+
+        # Stack into [seq_len, 4]: [token_id, start, end, dur_frames]
+        ts_tensor = torch.stack(
+            [token_ids_f, start_sec, end_sec, pred_dur.float()],
+            dim=1
+        )  # [seq_len, 4]
+
+        return audio, ts_tensor
 
 
 import argparse
@@ -232,7 +215,6 @@ def main():
         print("Missing torch. Install with: pip install torch")
         sys.exit(1)
 
-    # Stub out spacy if not installed — transformers tries to import it
     try:
         import spacy
     except ImportError:
@@ -240,13 +222,6 @@ def main():
         spacy_stub = types.ModuleType("spacy")
         spacy_stub.__version__ = "3.0.0"
         sys.modules["spacy"] = spacy_stub
-
-#    try:
-#        from kokoro import KModel
-#    except ImportError:
-#        print("Missing kokoro package.")
-#        print("Clone hexgrad/Kokoro-82M and run: pip install -e .")
-#        sys.exit(1)
 
     try:
         from huggingface_hub import hf_hub_download, snapshot_download
@@ -267,60 +242,31 @@ def main():
 
     print(f"Loading weights from {weights_path}")
     model = KModel().to(device).eval()
-    # weights_only=False required — checkpoint uses pickle, not safetensors
-    #state_dict = torch.load(weights_path, map_location=device, weights_only=False)
-    #model.load_state_dict(state_dict)
 
-    # ── Wrap model for tracing ───────────────────────────────────────────────
-    # KokoroWrapper bakes speed into the forward pass so the C++ side only needs
-    # to pass (input_ids, ref_s).  The model returns audio directly (no tuple).
-    speed = args.speed
+    # ── Wrap and trace ───────────────────────────────────────────────────────
+    wrapper = KokoroWrapper(model, speed=args.speed).to(device).eval()
 
-    class KokoroWrapper(torch.nn.Module):
-        def __init__(self, m):
-            super().__init__()
-            self.m = m
-
-        # Explicitly type hint the return as a Tuple of two Tensors
-        def forward(self, input_ids: torch.Tensor, ref_s: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-            # Call the internal method
-            audio, _, ts_list = self.m.forward_with_tokens(input_ids, ref_s, speed)
-
-            # Convert phoneme list to a Tensor (C++ can't read Python lists/objects)
-            # We pack [id, start, end, frames] into rows
-            ts_tensor = torch.tensor([
-                [float(p.token_id), p.start, p.end, float(p.duration_frames)]
-                for p in ts_list
-            ], dtype=torch.float32)
-
-            # RETURN A TUPLE
-            return audio, ts_tensor
-
-    wrapper = KokoroWrapper(model).to(device).eval()
-
-    # Use a realistic sequence length for tracing (not too short)
-    seq_len = 50
+    seq_len     = 50
     example_ids = torch.randint(1, 160, (1, seq_len), dtype=torch.long).to(device)
     example_ref = torch.zeros(1, 256, dtype=torch.float32).to(device)
 
     out_path = os.path.join(args.output_dir, "kokoro_traced.pt")
-    print(f"Tracing model (seq_len={seq_len}, speed={speed})...")
+    print(f"Tracing model (seq_len={seq_len}, speed={args.speed})...")
     with torch.no_grad():
         traced = torch.jit.trace(wrapper, (example_ids, example_ref), strict=False)
     traced.save(out_path)
     print(f"  Saved: {out_path}")
 
-    # ── Download voice packs ─────────────────────────────────────────────────
+    # ── Download and convert voice packs ────────────────────────────────────
     print("\nDownloading voice packs...")
     try:
         voice_repo = snapshot_download("hexgrad/Kokoro-82M",
                                         allow_patterns=["voices/*.pt"])
     except Exception as e:
         print(f"  Warning: snapshot_download failed ({e})")
-        print("  Trying individual file download as fallback...")
         voice_repo = None
 
-    import glob, shutil
+    import glob
 
     if voice_repo:
         pt_files = glob.glob(os.path.join(voice_repo, "voices", "*.pt"))
@@ -328,7 +274,6 @@ def main():
         pt_files = []
 
     if not pt_files:
-        # Last resort: check if files are already in output dir as .pt
         pt_files = glob.glob(os.path.join(voices_dir, "*.pt"))
         if pt_files:
             print("  Found .pt files already in voices dir, converting...")
@@ -339,7 +284,6 @@ def main():
     else:
         _convert_voices(pt_files, voices_dir, device)
 
-    # ── Summary ───────────────────────────────────────────────────────────────
     print(f"""
 Export complete!
   Model:  {out_path}
@@ -360,12 +304,6 @@ Run:
 
 
 def _convert_voices(pt_files, voices_dir, device):
-    """Convert .pt voice tensors to raw float32 .bin files.
-
-    Voice tensors have shape (N, 1, 256) where N is typically 510.
-    The C++ side reads them as a flat array of float32 values and
-    reconstructs the shape as (total_floats // 256, 1, 256).
-    """
     import torch
 
     for pt_path in sorted(pt_files):
@@ -382,7 +320,6 @@ def _convert_voices(pt_files, voices_dir, device):
                 continue
 
         if tensor.dim() == 2:
-            # Some voices are stored as (N, 256) — add the middle dim
             tensor = tensor.unsqueeze(1)
 
         if tensor.dim() != 3 or tensor.shape[1] != 1 or tensor.shape[2] != 256:

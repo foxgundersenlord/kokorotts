@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/foxg/Projects/kokoro_vibecoded/cmake_install.cmake"
+		"/home/foxg/Desktop/kokoro/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

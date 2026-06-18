@@ -3,63 +3,194 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
-#include <algorithm>
 #include <sstream>
+#include <algorithm>
+#include <cctype>
 
 namespace fs = std::filesystem;
 
 namespace kokoro {
 
-// Split text into sentence-sized chunks at ./?/! boundaries.
-// Each chunk is short enough to stay within the model's token limit.
+// ---------------------------------------------------------------------------
+// Sentence splitting
+// ---------------------------------------------------------------------------
+
 static std::vector<std::string> split_sentences(const std::string& text) {
     std::vector<std::string> out;
     std::string cur;
     for (size_t i = 0; i < text.size(); ++i) {
         cur += text[i];
         char c = text[i];
-        // Sentence boundary: .  !  ? — possibly followed by closing quote/paren
         if (c == '.' || c == '!' || c == '?') {
-            // Consume any trailing closing punctuation on the same boundary
             while (i + 1 < text.size() &&
                    (text[i+1] == '"' || text[i+1] == '\'' ||
                     text[i+1] == ')' || text[i+1] == ']' ||
-                    text[i+1] == '\xe2')) { // start of UTF-8 curly quote
-                // For UTF-8 two/three-byte sequences swallow the full codepoint
+                    text[i+1] == '\xe2')) {
                 unsigned char nc = static_cast<unsigned char>(text[i+1]);
                 int seq = (nc < 0x80) ? 1 : (nc < 0xE0) ? 2 : (nc < 0xF0) ? 3 : 4;
                 for (int s = 0; s < seq && i + 1 < text.size(); ++s)
                     cur += text[++i];
             }
-            // Only split if the next non-space character is uppercase or end-of-string
             size_t j = i + 1;
             while (j < text.size() && text[j] == ' ') ++j;
             if (j >= text.size() || std::isupper(static_cast<unsigned char>(text[j]))) {
-                // Trim
                 size_t s = cur.find_first_not_of(" \t\r\n");
                 if (s != std::string::npos) out.push_back(cur.substr(s));
                 cur.clear();
             }
-        }
-        // Also split on explicit newlines
-        else if (c == '\n') {
+        } else if (c == '\n') {
             size_t s = cur.find_first_not_of(" \t\r\n");
             if (s != std::string::npos) out.push_back(cur.substr(s));
             cur.clear();
         }
     }
-    // Remainder
     size_t s = cur.find_first_not_of(" \t\r\n");
     if (s != std::string::npos) out.push_back(cur.substr(s));
     return out;
 }
+
+// ---------------------------------------------------------------------------
+// Word extraction (mirrors G2P word tokenizer — splits on whitespace)
+// ---------------------------------------------------------------------------
+
+static std::vector<std::string> extract_words(const std::string& text) {
+    std::vector<std::string> words;
+    std::istringstream ss(text);
+    std::string w;
+    while (ss >> w) {
+        // Strip leading/trailing punctuation to get a clean label
+        size_t start = 0, end = w.size();
+        while (start < end && !std::isalnum(static_cast<unsigned char>(w[start])) && w[start] != '\'')
+            ++start;
+        while (end > start && !std::isalnum(static_cast<unsigned char>(w[end-1])) && w[end-1] != '\'')
+            --end;
+        if (start < end)
+            words.push_back(w.substr(start, end - start));
+        else
+            words.push_back(w); // keep punctuation-only tokens as-is
+    }
+    return words;
+}
+
+// ---------------------------------------------------------------------------
+// Word timestamp building
+// ---------------------------------------------------------------------------
+
+// Space token ID in Kokoro vocab
+static constexpr int64_t SPACE_TOKEN = 16;
+static constexpr int64_t PAD_TOKEN   = 0;
+
+// The token sequence fed to the model is [0, tok1, tok2, …, 0].
+// The timestamp tensor has one row per non-pad token position.
+// We group consecutive non-space/non-pad tokens into words by tracking
+// how many phoneme tokens each word contributes.
+//
+// Because we don't have a direct token→word map from G2P (it's embedded in
+// g2p.cpp's text_to_tokens loop), we re-derive word boundaries by scanning
+// the token sequence for SPACE_TOKEN separators.
+std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
+    const std::vector<int64_t>&    token_ids,
+    const torch::Tensor&           ts_tensor,
+    const std::vector<std::string>& words)
+{
+    // ts_tensor shape: [N, 4]  (token_id, start_sec, end_sec, dur_frames)
+    // N should equal token_ids.size() (model sees all tokens including pads).
+    if (ts_tensor.dim() != 2 || ts_tensor.size(1) < 3) return {};
+
+    const int64_t N = ts_tensor.size(0);
+    const float* ts = ts_tensor.to(torch::kFloat32).cpu().contiguous().data_ptr<float>();
+
+    // Collect per-token [start, end] for non-pad tokens.
+    // We index by position in the token_ids vector.
+    struct TokSpan { double start; double end; };
+    std::vector<TokSpan> spans;
+    spans.reserve(token_ids.size());
+
+    int64_t ts_row = 0; // row cursor into ts_tensor
+    for (size_t i = 0; i < token_ids.size(); ++i) {
+        if (ts_row < N) {
+            spans.push_back({static_cast<double>(ts[ts_row * 4 + 1]),
+                             static_cast<double>(ts[ts_row * 4 + 2])});
+            ++ts_row;
+        } else {
+            spans.push_back({0.0, 0.0});
+        }
+    }
+
+    // Walk the token list; group phoneme tokens between SPACE/PAD boundaries
+    // into word-sized buckets, then assign to the extracted words list.
+    std::vector<WordTimestamp> result;
+    double word_start = -1.0, word_end = 0.0;
+    size_t word_idx = 0;
+
+    auto flush_word = [&]() {
+        if (word_start < 0.0 || word_idx >= words.size()) return;
+        result.push_back({words[word_idx], word_start, word_end});
+        ++word_idx;
+        word_start = -1.0;
+    };
+
+    for (size_t i = 0; i < token_ids.size(); ++i) {
+        int64_t tok = token_ids[i];
+        if (tok == PAD_TOKEN || tok == SPACE_TOKEN) {
+            if (tok == SPACE_TOKEN) flush_word();
+            continue;
+        }
+        double ts_start = spans[i].start;
+        double ts_end   = spans[i].end;
+        if (word_start < 0.0) word_start = ts_start;
+        if (ts_end > word_end) word_end = ts_end;
+    }
+    flush_word(); // last word (no trailing space)
+
+    return result;
+}
+
+// ---------------------------------------------------------------------------
+// JSON serialisation (no external library needed)
+// ---------------------------------------------------------------------------
+
+static std::string json_escape(const std::string& s) {
+    std::string out;
+    for (char c : s) {
+        switch (c) {
+            case '"':  out += "\\\""; break;
+            case '\\': out += "\\\\"; break;
+            case '\n': out += "\\n";  break;
+            case '\r': out += "\\r";  break;
+            case '\t': out += "\\t";  break;
+            default:   out += c;      break;
+        }
+    }
+    return out;
+}
+
+std::string KokoroTTS::timestamps_to_json(const std::vector<WordTimestamp>& words) {
+    std::ostringstream os;
+    os << "[\n";
+    for (size_t i = 0; i < words.size(); ++i) {
+        const auto& w = words[i];
+        os << "  {";
+        os << "\"word\": \"" << json_escape(w.word) << "\", ";
+        os << "\"start\": " << w.start_sec << ", ";
+        os << "\"end\": "   << w.end_sec;
+        os << "}";
+        if (i + 1 < words.size()) os << ",";
+        os << "\n";
+    }
+    os << "]\n";
+    return os.str();
+}
+
+// ---------------------------------------------------------------------------
+// Constructor / voice loading
+// ---------------------------------------------------------------------------
 
 KokoroTTS::KokoroTTS(const Config& cfg)
     : cfg_(cfg),
       device_(cfg.use_gpu && torch::cuda::is_available()
               ? torch::kCUDA : torch::kCPU)
 {
-    // Load TorchScript model
     try {
         model_ = torch::jit::load(cfg_.model_path, device_);
         model_.eval();
@@ -68,7 +199,6 @@ KokoroTTS::KokoroTTS(const Config& cfg)
                                  cfg_.model_path + "': " + e.what());
     }
 
-    // Build G2P engine
     misaki::G2P::Config g2p_cfg;
     g2p_cfg.cmudict_path  = cfg_.cmudict_path;
     g2p_cfg.espeak_voice  = cfg_.espeak_voice;
@@ -82,13 +212,10 @@ KokoroTTS::KokoroTTS(const Config& cfg)
         std::cerr << "[kokoro] Warning: espeak-ng unavailable. "
                      "Only CMU dict words will be phonemized.\n";
 
-    // Load default voice
     load_voice(cfg_.voice);
 }
 
 void KokoroTTS::load_voice(const std::string& voice_name) {
-    // Voice tensors are stored as raw float32 binary files (shape: N × 1 × 256).
-    // Generate them from .pt files using: scripts/export_model.py
     std::string path = (fs::path(cfg_.voices_dir) / (voice_name + ".bin")).string();
     std::ifstream f(path, std::ios::binary | std::ios::ate);
     if (!f.is_open())
@@ -105,7 +232,6 @@ void KokoroTTS::load_voice(const std::string& voice_name) {
     if (!f)
         throw std::runtime_error("Failed to read voice file: " + path);
 
-    // Shape: (N, 1, 256) — N is number of supported sequence lengths.
     int64_t N = static_cast<int64_t>(buf.size()) / 256;
     if (N * 256 != static_cast<int64_t>(buf.size()))
         throw std::runtime_error("Voice file size not a multiple of 256 floats: " + path);
@@ -132,22 +258,26 @@ std::vector<std::string> KokoroTTS::list_voices() const {
 }
 
 torch::Tensor KokoroTTS::select_style(size_t token_count) const {
-    // Kokoro indexes the voice pack at (len(tokens) - 1), clamped to valid range.
-    int64_t N = voice_pack_.size(0);
+    int64_t N   = voice_pack_.size(0);
     int64_t idx = static_cast<int64_t>(token_count) - 1;
     idx = std::max<int64_t>(0, std::min(idx, N - 1));
-
-    // voice_pack_ shape: (N, 1, 256)  → slice at idx → (1, 256) → squeeze → (256,)
     return voice_pack_[idx].squeeze(0);
 }
 
-std::vector<float> KokoroTTS::synthesize(const std::string& text) const {
+// ---------------------------------------------------------------------------
+// Core synthesis
+// ---------------------------------------------------------------------------
+
+KokoroTTS::SynthResult KokoroTTS::synthesize(const std::string& text) const {
     // ── 1. G2P ──────────────────────────────────────────────────────────────
     std::vector<int64_t> token_ids = g2p_->text_to_tokens(text);
     if (token_ids.size() <= 2) {
         std::cerr << "[kokoro] Warning: empty token sequence for: " << text << "\n";
         return {};
     }
+
+    // Extract words for timestamp labelling (before model call)
+    std::vector<std::string> words = extract_words(text);
 
     // ── 2. Build input tensors ───────────────────────────────────────────────
     const int64_t seq_len = static_cast<int64_t>(token_ids.size());
@@ -158,52 +288,79 @@ std::vector<float> KokoroTTS::synthesize(const std::string& text) const {
         torch::TensorOptions().dtype(torch::kInt64)
     ).clone().to(device_);
 
-    // Style vector: shape (1, 256)
     torch::Tensor ref_s = select_style(token_ids.size())
-                              .unsqueeze(0)   // → (1, 256)
+                              .unsqueeze(0)
                               .to(device_);
 
     // ── 3. Inference ─────────────────────────────────────────────────────────
-    // The traced KokoroWrapper takes (input_ids, ref_s) and returns audio directly.
-    // Speed is baked into the trace at export time (default 1.0).
+    // KokoroWrapper returns (audio, ts_tensor) — see scripts/export_model.py.
     torch::Tensor audio;
-    torch::Tensor ts;
+    torch::Tensor ts_tensor;
     {
         torch::NoGradGuard no_grad;
         std::vector<torch::jit::IValue> inputs = {input_ids, ref_s};
         auto outputs = model_.forward(inputs).toTuple();
-
-        audio = outputs->elements()[0].toTensor();
-        ts = outputs->elements()[0].toTensor();
-
+        audio     = outputs->elements()[0].toTensor();  // waveform
+        ts_tensor = outputs->elements()[1].toTensor();  // [N, 4] timestamps
     }
 
-    // audio shape: (1, num_samples) — squeeze batch dim
     audio = audio.squeeze(0).to(torch::kFloat32).cpu().contiguous();
 
+    SynthResult result;
+
     const float* ptr = audio.data_ptr<float>();
-    return std::vector<float>(ptr, ptr + audio.numel());
+    result.audio.assign(ptr, ptr + audio.numel());
+
+    // ── 4. Build word timestamps ─────────────────────────────────────────────
+    ts_tensor = ts_tensor.to(torch::kFloat32).cpu().contiguous();
+    result.words = build_word_timestamps(token_ids, ts_tensor, words);
+
+    return result;
 }
+
+// ---------------------------------------------------------------------------
+// WAV + JSON output
+// ---------------------------------------------------------------------------
 
 void KokoroTTS::synthesize_to_wav(const std::string& text,
                                    const std::string& output_path) const {
     auto sentences = split_sentences(text);
-    if (sentences.empty()) sentences.push_back(text); // fallback: treat as one chunk
+    if (sentences.empty()) sentences.push_back(text);
 
-    // 0.25 s of silence between sentences (24 kHz)
-    static const int SILENCE_SAMPLES = 6000;
+    static const int SILENCE_SAMPLES = 6000; // 0.25 s at 24 kHz
 
-    std::vector<float> all_samples;
+    std::vector<float>         all_samples;
+    std::vector<WordTimestamp> all_words;
+    double time_offset = 0.0;
     bool first = true;
+
     for (const auto& sent : sentences) {
         auto chunk = synthesize(sent);
-        if (chunk.empty()) {
+        if (chunk.audio.empty()) {
             std::cerr << "[kokoro] No audio for chunk: " << sent << "\n";
             continue;
         }
-        if (!first)
+
+        double silence_sec = 0.0;
+        if (!first) {
             all_samples.insert(all_samples.end(), SILENCE_SAMPLES, 0.0f);
-        all_samples.insert(all_samples.end(), chunk.begin(), chunk.end());
+            silence_sec = static_cast<double>(SILENCE_SAMPLES) /
+                          audio::WavWriter::SAMPLE_RATE;
+        }
+
+        // Shift word timestamps by accumulated audio offset
+        for (auto& w : chunk.words) {
+            w.start_sec += time_offset;
+            w.end_sec   += time_offset;
+            all_words.push_back(w);
+        }
+
+        time_offset += silence_sec +
+                       static_cast<double>(chunk.audio.size()) /
+                       audio::WavWriter::SAMPLE_RATE;
+
+        all_samples.insert(all_samples.end(),
+                           chunk.audio.begin(), chunk.audio.end());
         first = false;
     }
 
@@ -211,8 +368,21 @@ void KokoroTTS::synthesize_to_wav(const std::string& text,
         std::cerr << "[kokoro] No audio generated for: " << text << "\n";
         return;
     }
+
+    // Write WAV
     if (!audio::WavWriter::write(output_path, all_samples))
         throw std::runtime_error("Failed to write WAV file: " + output_path);
+
+    // Write JSON timestamps alongside the WAV
+    std::string json_path = output_path + ".json";
+    std::ofstream jf(json_path);
+    if (!jf.is_open())
+        throw std::runtime_error("Failed to write timestamp JSON: " + json_path);
+    jf << timestamps_to_json(all_words);
+    if (!jf)
+        throw std::runtime_error("Error while writing timestamp JSON: " + json_path);
+
+    std::cout << "Wrote: " << json_path << "\n";
 }
 
 } // namespace kokoro

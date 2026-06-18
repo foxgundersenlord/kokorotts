@@ -10,6 +10,12 @@
 
 namespace kokoro {
 
+struct WordTimestamp {
+    std::string word;
+    double start_sec;
+    double end_sec;
+};
+
 // High-level Kokoro-82M TTS interface.
 //
 // Usage:
@@ -21,6 +27,7 @@ namespace kokoro {
 //
 //   KokoroTTS tts(cfg);
 //   tts.synthesize_to_wav("Hello world.", "output.wav");
+//   // Also writes output.wav.json with per-word timestamps
 class KokoroTTS {
 public:
     struct Config {
@@ -33,12 +40,18 @@ public:
         bool use_gpu = false;
     };
 
+    struct SynthResult {
+        std::vector<float>         audio;
+        std::vector<WordTimestamp> words;
+    };
+
     explicit KokoroTTS(const Config& cfg);
 
-    // Synthesize text → audio samples (float32, 24 kHz mono).
-    std::vector<float> synthesize(const std::string& text) const;
+    // Synthesize text → audio samples (float32, 24 kHz mono) + word timestamps.
+    SynthResult synthesize(const std::string& text) const;
 
     // Synthesize text and write to a WAV file.
+    // Also writes <output_path>.json containing per-word timestamps.
     void synthesize_to_wav(const std::string& text,
                            const std::string& output_path) const;
 
@@ -62,6 +75,19 @@ private:
     // Select style vector from voice_pack based on sequence length.
     // Returns tensor of shape (1, 256).
     torch::Tensor select_style(size_t token_count) const;
+
+    // Build word-level timestamps by mapping token timestamps back to words.
+    // token_ids: the full padded token sequence fed to the model.
+    // ts_tensor:  shape [N_tokens, 4] — [token_id, start_sec, end_sec, dur_frames].
+    // words:      the space-split word list in order (from G2P normalization).
+    static std::vector<WordTimestamp> build_word_timestamps(
+        const std::vector<int64_t>&   token_ids,
+        const torch::Tensor&          ts_tensor,
+        const std::vector<std::string>& words);
+
+    // Serialize a list of WordTimestamps to a JSON string (no external deps).
+    static std::string timestamps_to_json(
+        const std::vector<WordTimestamp>& words);
 };
 
 } // namespace kokoro
