@@ -132,9 +132,7 @@ std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
     for (size_t i = 0; i < token_ids.size(); ++i) {
         int64_t tok = token_ids[i];
 
-        // BUG FIX: skip pad tokens without flushing — the leading pad at i=0
-        // and trailing pad at i=end are not word boundaries; treating them as
-        // SPACE caused the first/last word to be skipped or double-flushed.
+        // Pad tokens are not word boundaries; skip without flushing.
         if (tok == PAD_TOKEN) continue;
 
         if (tok == SPACE_TOKEN) {
@@ -142,15 +140,11 @@ std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
             continue;
         }
 
-        // Get the leading pad's duration to use as the time base offset to subtract
-        double pad_offset = 0.0;
-        if (!token_ids.empty() && token_ids[0] == PAD_TOKEN && N > 0) {
-            pad_offset = static_cast<double>(ts[0 * 4 + 2]); // end_sec of leading pad = its duration
-        }
-
-        // Then when assigning span times:
-        double ts_start = spans[i].start - pad_offset;
-        double ts_end   = spans[i].end   - pad_offset;
+        // ts_tensor's start/end are already cumulative from the start of the
+        // audio (built via torch.cumsum over the full padded sequence in
+        // export_model.py), so they need no offset correction here.
+        double ts_start = spans[i].start;
+        double ts_end   = spans[i].end;
         if (word_start < 0.0) word_start = ts_start;
         if (ts_end > word_end) word_end = ts_end;
     }
