@@ -148,7 +148,21 @@ std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
         if (word_start < 0.0) word_start = ts_start;
         if (ts_end > word_end) word_end = ts_end;
     }
+    
     flush_word(); // last word — no trailing SPACE token in sequence
+
+    // The trailing pad token (and any sentence-final punctuation) can carry
+    // real predicted duration that extends past the last word's tokens —
+    // this is audio the vocoder actually renders (decay/tail), so the last
+    // reported word's end should not be shorter than it.
+    if (!result.empty() && N > 0) {
+        double full_end = static_cast<double>(ts[(N - 1) * 4 + 2]); // end_sec of last row
+        if (full_end > result.back().end_sec) {
+            result.back().end_sec = full_end;
+        }
+    }
+
+    return result;
 
     return result;
 }
