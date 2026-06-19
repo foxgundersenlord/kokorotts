@@ -148,7 +148,7 @@ std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
         if (word_start < 0.0) word_start = ts_start;
         if (ts_end > word_end) word_end = ts_end;
     }
-    
+
     flush_word(); // last word — no trailing SPACE token in sequence
 
     // The trailing pad token (and any sentence-final punctuation) can carry
@@ -334,6 +334,47 @@ KokoroTTS::SynthResult KokoroTTS::synthesize(const std::string& text) const {
     // ── 4. Build word timestamps ─────────────────────────────────────────────
     ts_tensor = ts_tensor.to(torch::kFloat32).cpu().contiguous();
     result.words = build_word_timestamps(token_ids, ts_tensor, words);
+
+    // ── 4. Build word timestamps ─────────────────────────────────────────────
+    ts_tensor = ts_tensor.to(torch::kFloat32).cpu().contiguous();
+    result.words = build_word_timestamps(token_ids, ts_tensor, words);
+
+    // DEBUG: Print ts_tensor tail and audio length
+    {
+        double audio_duration = static_cast<double>(result.audio.size()) / 24000.0;
+        int64_t N = ts_tensor.size(0);
+
+        std::cerr << "\n[DEBUG] Audio chunk:\n";
+        std::cerr << "  audio duration: " << audio_duration << " sec\n";
+        std::cerr << "  ts_tensor shape: [" << N << ", 4]\n";
+
+        if (N > 0) {
+            std::cerr << "  Last 3 rows of ts_tensor:\n";
+            auto ts_cpu = ts_tensor.to(torch::kFloat32).cpu();
+            for (int64_t i = std::max<int64_t>(0, N - 3); i < N; ++i) {
+                float tok = ts_cpu[i][0].item<float>();
+                float start = ts_cpu[i][1].item<float>();
+                float end = ts_cpu[i][2].item<float>();
+                float dur = ts_cpu[i][3].item<float>();
+                std::cerr << "    [" << i << "] tok=" << tok << " start=" << start
+                          << " end=" << end << " dur=" << dur << "\n";
+            }
+        }
+
+        std::cerr << "  Last 10 token_ids: ";
+        for (size_t k = token_ids.size() > 10 ? token_ids.size()-10 : 0; k < token_ids.size(); ++k)
+            std::cerr << token_ids[k] << " ";
+        std::cerr << "\n";
+
+        if (!result.words.empty()) {
+            auto& last_word = result.words.back();
+            std::cerr << "  Last word: \"" << last_word.word << "\" end="
+                      << last_word.end_sec << " sec\n";
+            std::cerr << "  Gap (audio_end - last_word_end): "
+                      << (audio_duration - last_word.end_sec) << " sec\n";
+        }
+        std::cerr << "\n";
+    }
 
     return result;
 }
