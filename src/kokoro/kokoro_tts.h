@@ -83,7 +83,8 @@ private:
     static std::vector<WordTimestamp> build_word_timestamps(
         const std::vector<int64_t>&   token_ids,
         const torch::Tensor&          ts_tensor,
-        const std::vector<std::string>& words);
+        const std::vector<std::string>& words,
+        double                         audio_duration_sec);   // ← add this
 
     // Serialize a list of WordTimestamps to a JSON string (no external deps).
     static std::string timestamps_to_json(

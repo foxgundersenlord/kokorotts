@@ -89,28 +89,34 @@ static constexpr int64_t PAD_TOKEN   = 0;
 // g2p.cpp's text_to_tokens loop), we re-derive word boundaries by scanning
 // the token sequence for SPACE_TOKEN separators.
 std::vector<WordTimestamp> KokoroTTS::build_word_timestamps(
-    const std::vector<int64_t>&    token_ids,
-    const torch::Tensor&           ts_tensor,
-    const std::vector<std::string>& words)
+    const std::vector<int64_t>&   token_ids,
+    const torch::Tensor&          ts_tensor,
+    const std::vector<std::string>& words,
+    double                         audio_duration_sec)
 {
     if (ts_tensor.dim() != 2 || ts_tensor.size(1) < 3) return {};
 
     const int64_t N = ts_tensor.size(0);
     const float* ts = ts_tensor.to(torch::kFloat32).cpu().contiguous().data_ptr<float>();
 
-    // The model receives token_ids as-is (including both pad tokens at index 0
-    // and end), and ts_tensor has one row per token position — including pads.
-    // PAD tokens have real (but meaningless) duration entries; we must skip them
-    // when building word spans, but we still consume their ts_tensor row so that
-    // the row cursor stays aligned with the token position.
+    // The model's own time units can be off by a constant factor (e.g. an
+    // export-time hop_length constant that doesn't match the model's true
+    // internal upsampling). Rescale every timestamp so the last token's end
+    // always lines up with the real, measured audio duration — this is
+    // correct regardless of what the underlying constant actually is.
+    double model_total_sec = (N > 0) ? static_cast<double>(ts[(N - 1) * 4 + 2]) : 0.0;
+    double scale = (model_total_sec > 1e-6 && audio_duration_sec > 0.0)
+                    ? audio_duration_sec / model_total_sec
+                    : 1.0;
+
     struct TokSpan { double start; double end; };
     std::vector<TokSpan> spans;
     spans.reserve(token_ids.size());
 
     for (size_t i = 0; i < token_ids.size(); ++i) {
         if ((int64_t)i < N) {
-            spans.push_back({static_cast<double>(ts[i * 4 + 1]),
-                             static_cast<double>(ts[i * 4 + 2])});
+            spans.push_back({static_cast<double>(ts[i * 4 + 1]) * scale,
+                            static_cast<double>(ts[i * 4 + 2]) * scale});
         } else {
             spans.push_back({0.0, 0.0});
         }
@@ -333,15 +339,10 @@ KokoroTTS::SynthResult KokoroTTS::synthesize(const std::string& text) const {
 
     // ── 4. Build word timestamps ─────────────────────────────────────────────
     ts_tensor = ts_tensor.to(torch::kFloat32).cpu().contiguous();
-    result.words = build_word_timestamps(token_ids, ts_tensor, words);
+    double audio_duration = static_cast<double>(result.audio.size()) / audio::WavWriter::SAMPLE_RATE;
+    result.words = build_word_timestamps(token_ids, ts_tensor, words, audio_duration);
 
-    // ── 4. Build word timestamps ─────────────────────────────────────────────
-    ts_tensor = ts_tensor.to(torch::kFloat32).cpu().contiguous();
-    result.words = build_word_timestamps(token_ids, ts_tensor, words);
-
-    // DEBUG: Print ts_tensor tail and audio length
     {
-        double audio_duration = static_cast<double>(result.audio.size()) / 24000.0;
         int64_t N = ts_tensor.size(0);
 
         std::cerr << "\n[DEBUG] Audio chunk:\n";

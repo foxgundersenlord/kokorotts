@@ -148,7 +148,7 @@ class KokoroWrapper(torch.nn.Module):
     sequences of any length at runtime.
     """
 
-    HOP_LENGTH  = 300
+    HOP_LENGTH  = 600
     SAMPLE_RATE = 24000
 
     def __init__(self, m: KModel, speed: float = 1.0):
